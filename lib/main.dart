@@ -57,13 +57,38 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() => _step = picked);
     }
   }
+  @override
+  void initState(){
+    super.initState();
+    print('1 initState');
+  }
 
   @override
-  Widget build(BuildContext context) {
+  void didChangeDependencies(){
+    super.didChangeDependencies();
+    print('2 didChangeDependencies');
+  }
+
+  @override
+  void didUpdateWidget(MyHomePage oldWidget){
+    super.didUpdateWidget(oldWidget);
+    print('didUpdateWidget');
+  }
+
+  @override
+  void dispose(){
+    print('dispose');
+    super.dispose();
+  }
+  
+  @override
+  Widget build(BuildContext context){
+    print('3 build');
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
+        flexibleSpace:Image.asset('assets/images/flower.jpg',fit:BoxFit.cover),
         actions:[
           TextButton(
             onPressed: _pickStep,
