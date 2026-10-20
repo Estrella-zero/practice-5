@@ -81,6 +81,11 @@ class _MyHomePageState extends State<MyHomePage> {
     super.dispose();
   }
   
+  Widget _buildItem(int index) {
+    print('非const项 $index build');
+    return const SizedBox.shrink();
+  }
+
   @override
   Widget build(BuildContext context){
     print('3 build');
@@ -105,6 +110,9 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            const SizedBox(height:24),
+            //for(int i = 0;i < 5;i++) _buildItem(i),
+            for(int i = 0;i < 5;i++)const _ConstItem(),
           ],
         ),
       ),
@@ -114,5 +122,14 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ),
     );
+  }
+}
+class _ConstItem extends StatelessWidget {
+  const _ConstItem();
+
+  @override
+  Widget build(BuildContext context) {
+    print('const项 build');
+    return const SizedBox.shrink();
   }
 }
